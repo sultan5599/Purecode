@@ -6,7 +6,8 @@ class ServiceBox extends StatelessWidget {
   final String title;
   final String description;
 
-  const ServiceBox({super.key, 
+  const ServiceBox({
+    super.key,
     required this.color,
     required this.imagePath,
     required this.title,
