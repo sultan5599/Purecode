@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'ContactPage.dart';
+import 'PricingPage.dart';
 import 'detail.dart';
+import 'homepage.dart';
 
 void main() {
   runApp(
@@ -28,6 +31,7 @@ class OurServiceApp extends StatelessWidget {
             fontSize: 32,
           ),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -59,7 +63,14 @@ class OurServiceApp extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              HomePage()), // Navigate to HomePage
+                    );
+                  },
                   child: ServiceBox(
                     color: const Color(0xFF333E50),
                     imagePath: Image.network(
@@ -78,27 +89,56 @@ class OurServiceApp extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 50,
-          color: const Color(0xff0D0D0D),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Icon(Icons.home_rounded, color: Color(0xff393939)),
-              GestureDetector(
-                onTap: () {},
-                child: const Icon(Icons.my_library_books_outlined,
-                    color: Color(0xff00FFFF)),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: const Icon(Icons.monetization_on_outlined,
-                    color: Color(0xff393939)),
-              ),
-              const Icon(Icons.perm_phone_msg_rounded, color: Color(0xff393939)),
-            ],
-          ),
+      bottomNavigationBar: _buildBottomNavigationBar(context),
+    );
+  }
+
+  Widget _buildBottomNavigationBar(BuildContext context) {
+    return BottomAppBar(
+      child: Container(
+        height: 50,
+        color: const Color(0xff0D0D0D),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context); // Go back to the previous page
+              },
+              child: const Icon(Icons.home_rounded, color: Color(0xff393939)),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              child: const Icon(Icons.my_library_books_outlined,
+                  color: Color(0xff00FFFF)),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PricingPage()),
+                );
+              },
+              child: const Icon(Icons.monetization_on_outlined,
+                  color: Color(0xff393939)),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ContactUsPage()),
+                );
+              },
+              child: const Icon(Icons.perm_phone_msg_rounded,
+                  color: Color(0xff393939)),
+            ),
+          ],
         ),
       ),
     );
@@ -111,7 +151,8 @@ class ServiceBox extends StatelessWidget {
   final String title;
   final String description;
 
-  const ServiceBox({super.key, 
+  const ServiceBox({
+    super.key,
     required this.color,
     required this.imagePath,
     required this.title,
