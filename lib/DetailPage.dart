@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: Detail(),
+    home: DetailPage(),
     debugShowCheckedModeBanner: false,
   ));
 }
 
-class Detail extends StatelessWidget {
-  const Detail({super.key});
+class DetailPage extends StatelessWidget {
+  const DetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {

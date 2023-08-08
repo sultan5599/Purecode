@@ -1,7 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'PricingPage.dart';
-import 'contactpage.dart';
-import 'our_service_app.dart';
+import 'ContactUsPage.dart';
+import 'OurServicePage.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -238,7 +240,8 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => OurServiceApp()),
+                  MaterialPageRoute(
+                      builder: (context) => const OurServicePage()),
                 );
               },
               child: const Icon(
@@ -250,7 +253,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PricingPage()),
+                  MaterialPageRoute(builder: (context) => const PricingPage()),
                 );
               },
               child: const Icon(
@@ -262,7 +265,8 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ContactUsPage()),
+                  MaterialPageRoute(
+                      builder: (context) => const ContactUsPage()),
                 );
               },
               child: const Icon(

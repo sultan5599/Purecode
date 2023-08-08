@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'ContactPage.dart';
+import 'ContactUsPage.dart';
 import 'PricingPage.dart';
-import 'detail.dart';
+import 'DetailPage.dart';
 import 'homepage.dart';
 
 void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OurServiceApp(),
+      home: OurServicePage(),
     ),
   );
 }
 
-class OurServiceApp extends StatelessWidget {
-  const OurServiceApp({super.key});
+class OurServicePage extends StatelessWidget {
+  const OurServicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class OurServiceApp extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Detail(),
+                        builder: (context) => const DetailPage(),
                       ),
                     );
                   },
@@ -66,9 +66,7 @@ class OurServiceApp extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              HomePage()), // Navigate to HomePage
+                      MaterialPageRoute(builder: (context) => HomePage()),
                     );
                   },
                   child: ServiceBox(
@@ -103,7 +101,7 @@ class OurServiceApp extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.pop(context); // Go back to the previous page
+                Navigator.pop(context);
               },
               child: const Icon(Icons.home_rounded, color: Color(0xff393939)),
             ),

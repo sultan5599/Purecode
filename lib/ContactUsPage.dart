@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'PricingPage.dart';
 import 'homePage.dart';
-import 'our_service_app.dart';
+import 'OurServicePage.dart';
 
 class ContactUsPage extends StatelessWidget {
   const ContactUsPage({super.key});
@@ -126,7 +126,7 @@ class ContactUsPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const OurServiceApp()),
+                      builder: (context) => const OurServicePage()),
                 );
               },
               child: const Icon(Icons.my_library_books_outlined,
