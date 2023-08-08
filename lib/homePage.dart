@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'PricingPage.dart';
 import 'contactpage.dart';
-import 'our_service_app.dart'; // Import the ContactPage
+import 'our_service_app.dart';
 
 class HomePage extends StatelessWidget {
+  HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,9 +17,9 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 160,
               width: 160,
-              child: Image.asset('assets/logo.png'),
+              child: Image.asset('assets/images/logo.png'),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
           ],
         ),
         centerTitle: true,
@@ -29,7 +31,7 @@ class HomePage extends StatelessWidget {
           children: [
             _buildCurrentDiscountsSection(),
             _buildSeparator(),
-            _buildInfoSection(),
+            _buildInfoSection('PureCode looking to remain a milestone...'),
             _buildSeparator(),
             _buildServicesSection(),
             _buildSeparator(),
@@ -39,70 +41,15 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 50,
-          color: const Color(0xff0D0D0D),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              IconButton(
-                icon: Icon(Icons.home_rounded, color: Color(0xff00FFFF)),
-                onPressed: () {
-                  // Do nothing since we are already on the homepage
-                },
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Handle navigation to other pages, e.g., PricingPage()
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PricingPage()),
-                  );
-                },
-                child: Icon(
-                  Icons.my_library_books_outlined,
-                  color: Color(0xff393939),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Handle navigation to other pages, e.g., MonetizationPage()
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => OurServiceApp()),
-                  );
-                },
-                child: Icon(
-                  Icons.monetization_on_outlined,
-                  color: Color(0xff393939),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Handle navigation to other pages, e.g., ContactPage()
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ContactUsPage()),
-                  );
-                },
-                child: Icon(
-                  Icons.perm_phone_msg_rounded,
-                  color: Color(0xff393939),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      bottomNavigationBar: _buildBottomNavigationBar(context),
     );
   }
 
   Widget _buildCurrentDiscountsSection() {
     return Column(
       children: [
-        SizedBox(height: 10),
-        Text(
+        const SizedBox(height: 10),
+        const Text(
           'Current discounts',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
@@ -110,8 +57,8 @@ class HomePage extends StatelessWidget {
           height: 200,
           child: PageView(
             children: [
-              _buildDiscountCard('assets/discounts1.png'),
-              _buildDiscountCard('assets/discounts2.png'),
+              _buildDiscountCard('assets/images/GameDev_Discount_Card.png'),
+              _buildDiscountCard('assets/images/WebDev_Discount_Card.png'),
             ],
           ),
         ),
@@ -122,7 +69,7 @@ class HomePage extends StatelessWidget {
   Widget _buildDiscountCard(String assetPath) {
     return Container(
       width: 300,
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         image: DecorationImage(
@@ -134,37 +81,35 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildSeparator() {
-    return Divider(
+    return const Divider(
       color: Color(0xFFCACACA),
       thickness: 2,
     );
   }
 
-  Widget _buildInfoSection() {
+  Widget _buildInfoSection(String description) {
     return Column(
       children: [
-        SizedBox(height: 10),
-        Text(
+        const SizedBox(height: 10),
+        const Text(
           'Who are we',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
-        _buildInfoBox(
-          'PureCode looking to remain a milestone in customizing, creating, and developing software and software solutions for all projects.',
-        ),
+        const SizedBox(height: 10),
+        _buildInfoBox(description),
       ],
     );
   }
 
   Widget _buildInfoBox(String description) {
     return Container(
-      padding: EdgeInsets.all(20),
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      color: Color(0xFF333E50),
+      padding: const EdgeInsets.all(20),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      color: const Color(0xFF333E50),
       child: Text(
         description,
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }
@@ -172,7 +117,7 @@ class HomePage extends StatelessWidget {
   Widget _buildServicesSection() {
     return Column(
       children: [
-        Text(
+        const Text(
           'Our services',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
@@ -180,9 +125,9 @@ class HomePage extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              _buildServiceBox('assets/gamedev.png'),
-              _buildServiceBox('assets/webdev.png'),
-              _buildServiceBox('assets/appdev.png'),
+              _buildServiceBox('assets/images/Game_Development_Card.png'),
+              _buildServiceBox('assets/images/Web_Development_Card.png'),
+              _buildServiceBox('assets/images/App_Development_Card.png'),
             ],
           ),
         ),
@@ -194,8 +139,8 @@ class HomePage extends StatelessWidget {
     return Container(
       width: 150,
       height: 150,
-      padding: EdgeInsets.all(10),
-      margin: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Image.asset(
         assetPath,
         fit: BoxFit.contain,
@@ -206,14 +151,14 @@ class HomePage extends StatelessWidget {
   Widget _buildWorksSection() {
     return Column(
       children: [
-        Text(
+        const Text(
           'Our works',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: 10),
-        _buildWorkBox('assets/ourwork1.png'),
-        SizedBox(height: 10),
-        _buildWorkBox('assets/ourwork2.png'),
+        const SizedBox(height: 10),
+        _buildWorkBox('assets/images/Bank_Page.png'),
+        const SizedBox(height: 10),
+        _buildWorkBox('assets/images/Law_Page.png'),
       ],
     );
   }
@@ -222,9 +167,9 @@ class HomePage extends StatelessWidget {
     return Container(
       width: 300,
       height: 300,
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        color: Color(0xFF333E50),
+        color: const Color(0xFF333E50),
         borderRadius: BorderRadius.circular(8),
         image: DecorationImage(
           image: AssetImage(assetPath),
@@ -246,7 +191,7 @@ class HomePage extends StatelessWidget {
   Widget _buildProgrammingLanguagesSection() {
     return Column(
       children: [
-        Text(
+        const Text(
           'Used programming languages',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
@@ -267,11 +212,65 @@ class HomePage extends StatelessWidget {
     return Container(
       width: 100,
       height: 100,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(imageUrl),
           fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomNavigationBar(BuildContext context) {
+    return BottomAppBar(
+      child: Container(
+        height: 50,
+        color: const Color(0xff0D0D0D),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.home_rounded, color: Color(0xff00FFFF)),
+              onPressed: () {},
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OurServiceApp()),
+                );
+              },
+              child: const Icon(
+                Icons.my_library_books_outlined,
+                color: Color(0xff393939),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PricingPage()),
+                );
+              },
+              child: const Icon(
+                Icons.monetization_on_outlined,
+                color: Color(0xff393939),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ContactUsPage()),
+                );
+              },
+              child: const Icon(
+                Icons.perm_phone_msg_rounded,
+                color: Color(0xff393939),
+              ),
+            ),
+          ],
         ),
       ),
     );
