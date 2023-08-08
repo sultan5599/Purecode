@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'homepage.dart'; // Import the HomePage
+import 'homepage.dart';
 
 void main() {
   runApp(
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       locale: DevicePreview.locale(context),
       debugShowCheckedModeBanner: false,
-      home: HomePage(), // Use HomePage as the home screen
+      home: HomePage(),
     );
   }
 }
